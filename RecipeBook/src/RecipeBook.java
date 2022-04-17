@@ -1,3 +1,5 @@
+package RecipeBook.src;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,11 +19,13 @@ public class RecipeBook {
         this.steps = steps;
     }
     // edits a recipe
-    public void edit(String title, ArrayList<String> steps, String ingredients) {
+    public void editRecipe(String title, ArrayList<String> steps, String ingredients) {
 
         // to implement: functionality with GUI:
         // upon pressing editRecipeButton, (if editRecipeButton.getModel().isPressed())
         // retrieve fileName of recipe that user interacts with
+
+        //if editRecipeButton.getModel().isPressed() {}
 
         try {
             File f = new File("RecipeBook/recipes/" + fileName);
@@ -35,6 +39,23 @@ public class RecipeBook {
         } catch(FileNotFoundException e) {
         }
     }
+
+    public void addRecipe() {
+        //add to the directory or file folder
+        //be able to create a file
+    }
+
+    public void deleteRecipe() {
+        //go into the directory if that name exists then delete it, if not return error
+        //delete a file
+    }
+
+    public void getRecipe() {
+        //check the directory if it does not exist create it
+        //return a string of the recipes that they can access
+        //the file names
+    }
+
     public static void main(String[] args){
         PopupWindow popupWindow = new PopupWindow();
         MainWindow mainWindow = new MainWindow(popupWindow);
