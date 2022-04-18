@@ -3,7 +3,9 @@ package RecipeBook.src;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 // defines a RecipeBook
@@ -40,14 +42,50 @@ public class RecipeBook {
         }
     }
 
-    public void addRecipe() {
+    public static void addRecipe() {
         //add to the directory or file folder
         //be able to create a file
+        String recipe = "";
+        File file = new File("./recipes");
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        String deckN = "./recipe/" +recipe.replace(" ", "_").toLowerCase() + ".recipe";
+        Recipe recipe1 = new Recipe();
+        recipe1.file(deckN);
+
+        try {
+            recipe1.save();
+        }
+        catch (IOException e) {
+            System.out.println("Error");
+            return;
+        }
+        //created if it gets to this point
     }
 
     public void deleteRecipe() {
         //go into the directory if that name exists then delete it, if not return error
         //delete a file
+        ArrayList arr = getRecipe();
+        int size = arr.size();
+        if (size > 0) {
+            //idk how to get what button they pressed
+            //so for this i will have it delete 2nd recipe
+
+            int choice = 1;
+            String file = (String) arr.get(choice);
+            try {
+                if (file.delete()) {
+                    System.out.println("deleted");
+                } else {
+                    System.out.println("failed");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     public static ArrayList getRecipe() {
@@ -67,6 +105,9 @@ public class RecipeBook {
         }
         return arr;
     }
+
+
+
 
     public static void main(String[] args){
         PopupWindow popupWindow = new PopupWindow();
