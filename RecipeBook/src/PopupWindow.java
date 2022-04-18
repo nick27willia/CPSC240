@@ -3,10 +3,19 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class PopupWindow {
+    private static PopupWindow instance;
     private JFrame baseFrame;
     private JPanel baseLayoutPanel;
 
-    public PopupWindow(){
+    // Make the PopupWindow class singleton
+    public static PopupWindow getInstance(){
+        if(instance == null){
+            instance = new PopupWindow();
+        }
+        return instance;
+    }
+
+    private PopupWindow(){
         this.baseFrame = new JFrame("Recipe");
         this.baseFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
