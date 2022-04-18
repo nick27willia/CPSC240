@@ -14,9 +14,11 @@ public class RecipeManager {
     }
     // Finds the recipe in the recipes arraylist and updates it
     public void editRecipe(Recipe recipe){
+
     }
     // Finds the recipe in the recipes arraylist and deletes it
     public void deleteRecipe(Recipe recipe){
+
     }
 
     // Returns recipes
