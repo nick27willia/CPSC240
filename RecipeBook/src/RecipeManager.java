@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class RecipeManager {
     private static RecipeManager instance;
     private ArrayList<Recipe> recipes;
+    private String selectedRecipe = "";
 
     // Make the RecipeManager class singleton so both windows can access the same instance (PopupWindow & MainWindow)
     public static RecipeManager getInstance(){
@@ -95,5 +96,8 @@ public class RecipeManager {
     // Returns recipes
     public ArrayList<Recipe> getRecipes(){
         return this.recipes;
+    }
+    public void setSelectedRecipe(String id) {
+        selectedRecipe = id;
     }
 }
