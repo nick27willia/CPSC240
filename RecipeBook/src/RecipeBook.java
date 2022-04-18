@@ -50,10 +50,22 @@ public class RecipeBook {
         //delete a file
     }
 
-    public void getRecipe() {
+    public static ArrayList getRecipe() {
         //check the directory if it does not exist create it
         //return a string of the recipes that they can access
         //the file names
+        ArrayList arr  = new ArrayList();
+        File file1 = new File("./recipes");
+        String[] arrL = file1.list();
+        if (arrL != null) {
+            int j = arrL.length;
+            for (String file : arrL) {
+                if (file.endsWith(".recipe")) {
+                    arr.add("./recipes/" + file);
+                }
+            }
+        }
+        return arr;
     }
 
     public static void main(String[] args){
