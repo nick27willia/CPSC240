@@ -1,5 +1,3 @@
-package RecipeBook.src;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -104,13 +102,5 @@ public class RecipeBook {
             }
         }
         return arr;
-    }
-
-
-
-
-    public static void main(String[] args){
-        PopupWindow popupWindow = new PopupWindow();
-        MainWindow mainWindow = new MainWindow(popupWindow);
     }
 }
