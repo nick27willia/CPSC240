@@ -5,11 +5,18 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class RecipeManager {
+    private static RecipeManager instance;
     private ArrayList<Recipe> recipes;
 
+    public static RecipeManager getInstance(){
+        if(instance == null){
+            instance = new RecipeManager();
+        }
+        return instance;
+    }
     // The recipe manager manages all the individual recipes and holds them in an arraylist
     // Each recipe is stored in its own .txt file
-    public RecipeManager(){
+    private RecipeManager(){
         this.recipes = new ArrayList<Recipe>();
 
         File f = new File("./RecipeBook/Recipes");
