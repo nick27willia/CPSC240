@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class RecipeManager {
@@ -6,6 +7,17 @@ public class RecipeManager {
     public RecipeManager(){
         this.recipes = new ArrayList<Recipe>();
         // TODO: load recipes from file path
+        String[] pathnames;
+        File f = new File("./RecipeBook/Recipes");
+        pathnames =f.list();
+        for (String pathname : pathnames) {
+            //System.out.println(pathname);
+            parseRecipeFromFile(pathname);
+        }
+    }
+    public Recipe parseRecipeFromFile(String filename) {
+
+        this.
     }
 
     // Adds a new recipe to the recipes arraylist
