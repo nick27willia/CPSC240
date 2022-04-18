@@ -8,6 +8,7 @@ public class RecipeManager {
     private static RecipeManager instance;
     private ArrayList<Recipe> recipes;
 
+    // Make the RecipeManager class singleton so both windows can access the same instance (PopupWindow & MainWindow)
     public static RecipeManager getInstance(){
         if(instance == null){
             instance = new RecipeManager();
