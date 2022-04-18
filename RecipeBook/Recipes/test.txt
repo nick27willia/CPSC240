@@ -1,4 +1,4 @@
+Id:test
 Title:sandwich
-Id:id
-Ingredients:tomato,bread
-Steps:get bread,get tomato
+Steps:get
+Ingredients:bread,get
