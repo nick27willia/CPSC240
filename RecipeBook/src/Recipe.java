@@ -1,28 +1,22 @@
+import java.util.ArrayList;
+
 // identifies a recipe and its components
 public class Recipe {
     private String title = "";
-    private ArrayList<String> steps = new ArrayList<String>();
-    private ArrayList<String> ingredients = "";
-    private String fileName = "";
-}
+    private ArrayList<String> steps;
+    private ArrayList<String> ingredients;
+    private String id = "";
 
-public Recipe(String title, ArrayList<String> steps, ArrayList<String> ingredients) {
-    this.title = title;
-    this.steps = steps;
-    this.ingredients = ingridents;
-}
-
- try {
-            File f = new File("RecipeBook/recipes/" + fileName);
-            Scanner in = new Scanner(new FileReader("recipes/" + fileName));
-            if (f.exists()) {
-                while(in.hasNextLine()) {
-                    this.steps.add(in.toString());
-                    in.nextLine();
-                }
-            }
-        } catch(FileNotFoundException e) {
-            System.out.println("Error");
-            return;
-        }
+    // constructor for gathering recipe parameters
+    public Recipe(String title, ArrayList<String> steps, ArrayList<String> ingredients, String id) {
+        this.title = title;
+        this.steps = steps;
+        this.ingredients = ingredients;
+        this.id = id;
     }
+    public void edit(String title, ArrayList<String> steps, ArrayList<String> ingredients) {
+        this.title = title;
+        this.steps = steps;
+        this.ingredients = ingredients;
+    }
+}
