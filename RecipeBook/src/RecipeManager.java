@@ -6,13 +6,10 @@ public class RecipeManager {
 
     public RecipeManager(){
         this.recipes = new ArrayList<Recipe>();
-        // TODO: load recipes from file path
-        String[] pathnames;
         File f = new File("./RecipeBook/Recipes");
-        pathnames =f.list();
-        for (String pathname : pathnames) {
+        for (String filename : f.list()) {
             //System.out.println(pathname);
-            parseRecipeFromFile(pathname);
+            parseRecipeFromFile(filename);
         }
     }
     public Recipe parseRecipeFromFile(String filename) {
