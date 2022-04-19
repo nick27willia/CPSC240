@@ -37,18 +37,20 @@ public class RecipeListPanel extends JPanel {
         // Add recipe button that shows the PopupWindow
         this.add(this.buildAddRecipeButton());
     }
+    // Recipe header
     private JLabel buildRecipesHeader(){
         JLabel recipesHeader = new JLabel("Recipes");
         recipesHeader.setFont(new Font("Dialog", Font.BOLD, 20));
         return recipesHeader;
     }
+    // Sort combobox label
     private JLabel buildSortLabel(){
         JLabel sortLabel = new JLabel("Sort");
         sortLabel.setFont(new Font("Dialog", Font.PLAIN, 14));
         return sortLabel;
     }
+    // Creates the sorting options combobox
     private JComboBox<String> buildSortOptionsComboBox(){
-        // Creates the sorting options combobox
         String[] sortOptions = new String[]{"Alphabetically, A-Z"};
         JComboBox<String> sortOptionsComboBox = new JComboBox<>(sortOptions);
         sortOptionsComboBox.setPreferredSize(new Dimension(300, 36));
@@ -56,6 +58,7 @@ public class RecipeListPanel extends JPanel {
         sortOptionsComboBox.setAlignmentX(0);
         return sortOptionsComboBox;
     }
+    // Creates the recipes list component
     private JList<String> buildRecipesList(){
         // Creates the array for the recipes list component
         DefaultListModel<String> recipesModel = new DefaultListModel<>();
@@ -72,11 +75,18 @@ public class RecipeListPanel extends JPanel {
 
         recipesList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
-                System.out.println(recipesList.getSelectedValue());
+                RecipeManager recipeManager = RecipeManager.getInstance();
+                // Gets index of selected recipe
+                int selectedIdx = recipesList.getSelectedIndex();
+                // Gets the selected recipe
+                Recipe selectedRecipe = recipeManager.getRecipes().get(selectedIdx);
+                // Updates the selected recipe id
+                recipeManager.setSelectedRecipeId(selectedRecipe.getId());
             }
         });
         return recipesList;
     }
+    // Add recipe button that shows the PopupWindow
     private JButton buildAddRecipeButton(){
         JButton addNewRecipeButton = new Button("Add New Recipe");
         // Opens the popup window on click

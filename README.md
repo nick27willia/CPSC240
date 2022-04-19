@@ -1,2 +1,3 @@
 # CPSC240
- x
+Recipe Book group project
+By Nate Wong, Jonathan Windsor, and Nick Williams

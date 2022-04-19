@@ -23,11 +23,13 @@ public class RecipeInfoPanel extends JPanel {
         // Creates a panel to horizontally align the edit and delete buttons
         this.add(this.buildRecipeInfoButtonsPanel());
     }
+    // Recipe title
     private JLabel buildRecipeTitleLabel(){
         JLabel recipeTitleLabel = new JLabel("Chicken and Rice");
         recipeTitleLabel.setFont(new Font("Dialog", Font.BOLD, 24));
         return recipeTitleLabel;
     }
+    // Creates a panel to align the ingredients and steps horizontally on the same line
     private JPanel buildIngredientsAndStepsPanel(){
         JPanel ingredientsAndStepsPanel = new JPanel();
         ingredientsAndStepsPanel.setAlignmentX(0);
@@ -43,6 +45,7 @@ public class RecipeInfoPanel extends JPanel {
         ingredientsAndStepsPanel.add(this.buildStepsPanel());
         return ingredientsAndStepsPanel;
     }
+    // Ingredients panel that holds the ingredients label and ingredients list
     private JPanel buildIngredientsPanel(){
         JPanel ingredientsPanel = new JPanel();
         ingredientsPanel.setAlignmentX(0);
@@ -59,11 +62,13 @@ public class RecipeInfoPanel extends JPanel {
         ingredientsPanel.add(this.buildIngredientsList());
         return ingredientsPanel;
     }
+    // Ingredients label
     private JLabel buildIngredientsLabel(){
         JLabel ingredientsLabel = new JLabel("Ingredients");
         ingredientsLabel.setFont(new Font("Dialog", Font.BOLD, 18));
         return ingredientsLabel;
     }
+    // Ingredients list
     private JEditorPane buildIngredientsList(){
         JEditorPane ingredientsList = new JEditorPane();
         ingredientsList.setBackground(Color.decode("#DDE0FB"));
@@ -73,6 +78,7 @@ public class RecipeInfoPanel extends JPanel {
         ingredientsList.setAlignmentX(0);
         return ingredientsList;
     }
+    // Steps panel that holds the steps label and steps list
     private JPanel buildStepsPanel(){
         JPanel stepsPanel = new JPanel();
         stepsPanel.setAlignmentX(0);
@@ -89,11 +95,13 @@ public class RecipeInfoPanel extends JPanel {
         stepsPanel.add(this.buildStepsList());
         return stepsPanel;
     }
+    // Steps label
     private JLabel buildStepsLabel(){
         JLabel stepsLabel = new JLabel("Steps");
         stepsLabel.setFont(new Font("Dialog", Font.BOLD, 18));
         return stepsLabel;
     }
+    // Steps list
     private JEditorPane buildStepsList(){
         JEditorPane stepsList = new JEditorPane();
         stepsList.setBackground(Color.decode("#DDE0FB"));
@@ -103,6 +111,7 @@ public class RecipeInfoPanel extends JPanel {
         stepsList.setAlignmentX(0);
         return stepsList;
     }
+    // Creates a panel to horizontally align the edit and delete buttons
     private JPanel buildRecipeInfoButtonsPanel(){
         JPanel recipeInfoButtonsPanel = new JPanel();
         recipeInfoButtonsPanel.setAlignmentX(0);
@@ -120,10 +129,12 @@ public class RecipeInfoPanel extends JPanel {
         recipeInfoButtonsPanel.add(this.buildDeleteRecipeButton());
         return recipeInfoButtonsPanel;
     }
+    // Edit recipe button
     private JButton buildEditRecipeButton(){
         JButton editRecipeButton = new Button("Edit Recipe");
         return editRecipeButton;
     }
+    // Delete recipe button
     private JButton buildDeleteRecipeButton(){
         JButton deleteRecipeButton = new Button("Delete Recipe");
         return deleteRecipeButton;

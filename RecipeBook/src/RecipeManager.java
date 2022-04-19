@@ -87,7 +87,7 @@ public class RecipeManager {
         }
         saveRecipes();
     }
-
+    // Save recipes
     public void saveRecipes() {
         for(Recipe recipe: this.recipes){
             recipe.save();
