@@ -82,6 +82,7 @@ public class RecipeListPanel extends JPanel {
                 Recipe selectedRecipe = recipeManager.getRecipes().get(selectedIdx);
                 // Updates the selected recipe id
                 recipeManager.setSelectedRecipeId(selectedRecipe.getId());
+                RecipeInfoPanel.getInstance().updateRecipeInfo(selectedRecipe);
             }
         });
         return recipesList;

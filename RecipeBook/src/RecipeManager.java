@@ -47,13 +47,13 @@ public class RecipeManager {
         ArrayList<String> ingredients, steps;
 
         try{
-            id = scnr.next().replace("Id:","");
-            title = scnr.next().replace("Title:","");
+            id = scnr.nextLine().replace("Id:","");
+            title = scnr.nextLine().replace("Title:","");
 
-            String[] stepsArr = scnr.next().replace("Steps:", "").split(",");
+            String[] stepsArr = scnr.nextLine().replace("Steps:", "").split(",");
             steps = new ArrayList<>(Arrays.asList(stepsArr));
 
-            String[] ingredientsArr = scnr.next().replace("Ingredients:", "").split(",");
+            String[] ingredientsArr = scnr.nextLine().replace("Ingredients:", "").split(",");
             ingredients = new ArrayList<>(Arrays.asList(ingredientsArr));
         }catch(Exception e){
             System.out.printf("Exception: file %s is in an invalid format\n", filename);

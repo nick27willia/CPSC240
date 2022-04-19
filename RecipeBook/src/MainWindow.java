@@ -23,7 +23,7 @@ public class MainWindow {
 
         // Add the recipe list panel
         this.baseLayoutPanel.add(new RecipeListPanel());
-        this.baseLayoutPanel.add(new RecipeInfoPanel());
+        this.baseLayoutPanel.add(RecipeInfoPanel.getInstance());
 
         this.baseFrame.getContentPane().add(this.baseLayoutPanel);
         this.baseFrame.setPreferredSize(new Dimension(800, 600));

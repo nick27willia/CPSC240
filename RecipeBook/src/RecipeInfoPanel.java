@@ -1,9 +1,21 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class RecipeInfoPanel extends JPanel {
-    public RecipeInfoPanel(){
+    private static RecipeInfoPanel instance;
+    private JLabel recipeTitleLabel;
+    private JEditorPane ingredientsList;
+    private JEditorPane stepsList;
+    // Make the RecipeInfoPanel class singleton
+    public static RecipeInfoPanel getInstance(){
+        if(instance == null){
+            instance = new RecipeInfoPanel();
+        }
+        return instance;
+    }
+    private RecipeInfoPanel(){
         super();
         this.setBackground(Color.decode("#DDE0FB"));
         this.setBorder(new EmptyBorder(12, 12, 12, 12));
@@ -25,9 +37,9 @@ public class RecipeInfoPanel extends JPanel {
     }
     // Recipe title
     private JLabel buildRecipeTitleLabel(){
-        JLabel recipeTitleLabel = new JLabel("Chicken and Rice");
-        recipeTitleLabel.setFont(new Font("Dialog", Font.BOLD, 24));
-        return recipeTitleLabel;
+        this.recipeTitleLabel = new JLabel("Chicken and Rice");
+        this.recipeTitleLabel.setFont(new Font("Dialog", Font.BOLD, 24));
+        return this.recipeTitleLabel;
     }
     // Creates a panel to align the ingredients and steps horizontally on the same line
     private JPanel buildIngredientsAndStepsPanel(){
@@ -70,13 +82,13 @@ public class RecipeInfoPanel extends JPanel {
     }
     // Ingredients list
     private JEditorPane buildIngredientsList(){
-        JEditorPane ingredientsList = new JEditorPane();
-        ingredientsList.setBackground(Color.decode("#DDE0FB"));
-        ingredientsList.setContentType("text/html");
-        ingredientsList.setEditable(false);
-        ingredientsList.setText("<html><ul style='margin:0px 20px'><li>Chicken</li><li>Rice</li></ul></html>");
-        ingredientsList.setAlignmentX(0);
-        return ingredientsList;
+        this.ingredientsList = new JEditorPane();
+        this.ingredientsList.setBackground(Color.decode("#DDE0FB"));
+        this.ingredientsList.setContentType("text/html");
+        this.ingredientsList.setEditable(false);
+        this.ingredientsList.setText("<html><ul style='margin:0px 20px'><li>Chicken</li><li>Rice</li></ul></html>");
+        this.ingredientsList.setAlignmentX(0);
+        return this.ingredientsList;
     }
     // Steps panel that holds the steps label and steps list
     private JPanel buildStepsPanel(){
@@ -103,13 +115,13 @@ public class RecipeInfoPanel extends JPanel {
     }
     // Steps list
     private JEditorPane buildStepsList(){
-        JEditorPane stepsList = new JEditorPane();
-        stepsList.setBackground(Color.decode("#DDE0FB"));
-        stepsList.setContentType("text/html");
-        stepsList.setEditable(false);
-        stepsList.setText("<html><ol style='margin:0px 20px'><li>Cook chicken</li><li>Cook rice</li></ol></html>");
-        stepsList.setAlignmentX(0);
-        return stepsList;
+        this.stepsList = new JEditorPane();
+        this.stepsList.setBackground(Color.decode("#DDE0FB"));
+        this.stepsList.setContentType("text/html");
+        this.stepsList.setEditable(false);
+        this.stepsList.setText("<html><ol style='margin:0px 20px'><li>Cook chicken</li><li>Cook rice</li></ol></html>");
+        this.stepsList.setAlignmentX(0);
+        return this.stepsList;
     }
     // Creates a panel to horizontally align the edit and delete buttons
     private JPanel buildRecipeInfoButtonsPanel(){
@@ -138,5 +150,18 @@ public class RecipeInfoPanel extends JPanel {
     private JButton buildDeleteRecipeButton(){
         JButton deleteRecipeButton = new Button("Delete Recipe");
         return deleteRecipeButton;
+    }
+    // Updates recipe info
+    public void updateRecipeInfo(Recipe recipe){
+        this.recipeTitleLabel.setText(recipe.getTitle());
+        this.ingredientsList.setText("<html><ul style='margin:0px 20px'>"+arrayListToLi(recipe.getIngredients())+"</ul></html>");
+        this.stepsList.setText("<html><ol style='margin:0px 20px'>"+arrayListToLi(recipe.getSteps())+"</ol></html>");
+    }
+    private String arrayListToLi(ArrayList<String> arrayList){
+        StringBuilder liString= new StringBuilder();
+        for (String el : arrayList) {
+            liString.append("<li>").append(el).append("</li>");
+        }
+        return liString.toString();
     }
 }
