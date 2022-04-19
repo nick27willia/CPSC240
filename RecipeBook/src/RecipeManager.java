@@ -100,4 +100,7 @@ public class RecipeManager {
     public void setSelectedRecipeId(String id) {
         selectedRecipeId = id;
     }
+    public String getSelectedRecipeId() {
+        return selectedRecipeId;
+    }
 }
