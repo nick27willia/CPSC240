@@ -37,7 +37,7 @@ public class RecipeInfoPanel extends JPanel {
     }
     // Recipe title
     private JLabel buildRecipeTitleLabel(){
-        this.recipeTitleLabel = new JLabel("Chicken and Rice");
+        this.recipeTitleLabel = new JLabel("Select a recipe");
         this.recipeTitleLabel.setFont(new Font("Dialog", Font.BOLD, 24));
         return this.recipeTitleLabel;
     }
@@ -86,7 +86,7 @@ public class RecipeInfoPanel extends JPanel {
         this.ingredientsList.setBackground(Color.decode("#DDE0FB"));
         this.ingredientsList.setContentType("text/html");
         this.ingredientsList.setEditable(false);
-        this.ingredientsList.setText("<html><ul style='margin:0px 20px'><li>Chicken</li><li>Rice</li></ul></html>");
+        this.ingredientsList.setText("<html><ul style='margin:0px 20px'></ul></html>");
         this.ingredientsList.setAlignmentX(0);
         return this.ingredientsList;
     }
@@ -119,7 +119,7 @@ public class RecipeInfoPanel extends JPanel {
         this.stepsList.setBackground(Color.decode("#DDE0FB"));
         this.stepsList.setContentType("text/html");
         this.stepsList.setEditable(false);
-        this.stepsList.setText("<html><ol style='margin:0px 20px'><li>Cook chicken</li><li>Cook rice</li></ol></html>");
+        this.stepsList.setText("<html><ol style='margin:0px 20px'></ol></html>");
         this.stepsList.setAlignmentX(0);
         return this.stepsList;
     }
@@ -149,6 +149,21 @@ public class RecipeInfoPanel extends JPanel {
     // Delete recipe button
     private JButton buildDeleteRecipeButton(){
         JButton deleteRecipeButton = new Button("Delete Recipe");
+        deleteRecipeButton.addActionListener(ae -> {
+            RecipeManager recipeManager = RecipeManager.getInstance();
+            // Dont allow delete button click if a recipe isnt selected
+            if(!recipeManager.getSelectedRecipeId().equals("")) {
+                // Prompt the user for confirmation that they want to delete the recipe
+                int selection = JOptionPane.showConfirmDialog(deleteRecipeButton, "Are you sure you want to delete the recipe?");
+                // 0 means that the user wants to delete
+                if (selection == 0) {
+                    recipeManager.deleteRecipe(recipeManager.getSelectedRecipeId());
+                    recipeManager.setSelectedRecipeId("");
+                    this.clearRecipeInfo();
+                    RecipeListPanel.getInstance().refreshRecipesListContents();
+                }
+            }
+        });
         return deleteRecipeButton;
     }
     // Updates recipe info
@@ -156,6 +171,11 @@ public class RecipeInfoPanel extends JPanel {
         this.recipeTitleLabel.setText(recipe.getTitle());
         this.ingredientsList.setText("<html><ul style='margin:0px 20px'>"+arrayListToLi(recipe.getIngredients())+"</ul></html>");
         this.stepsList.setText("<html><ol style='margin:0px 20px'>"+arrayListToLi(recipe.getSteps())+"</ol></html>");
+    }
+    private void clearRecipeInfo(){
+        this.recipeTitleLabel.setText("");
+        this.ingredientsList.setText("<html><ul style='margin:0px 20px'></ul></html>");
+        this.stepsList.setText("<html><ol style='margin:0px 20px'></ol></html>");
     }
     private String arrayListToLi(ArrayList<String> arrayList){
         StringBuilder liString= new StringBuilder();

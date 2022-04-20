@@ -2,13 +2,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class RecipeManager {
     private static RecipeManager instance;
     private ArrayList<Recipe> recipes;
     private String selectedRecipeId = "";
-
     // Make the RecipeManager class singleton so both windows can access the same instance (PopupWindow & MainWindow)
     public static RecipeManager getInstance(){
         if(instance == null){
@@ -87,8 +87,19 @@ public class RecipeManager {
         }
         saveRecipes();
     }
+    // Finds the recipe in the recipes arraylist and deletes it
+    public void deleteRecipe(String recipeId){
+        for (int i = 0; this.recipes.size() > i; i++) {
+            if (recipeId.equals(this.recipes.get(i).getId())) {
+                this.recipes.remove(i);
+                break;
+            }
+        }
+        saveRecipes();
+    }
     // Save recipes
     public void saveRecipes() {
+        // Save recipes
         for(Recipe recipe: this.recipes){
             recipe.save();
         }
@@ -97,9 +108,29 @@ public class RecipeManager {
     public ArrayList<Recipe> getRecipes(){
         return this.recipes;
     }
+    // Finds recipe by id
+    public Recipe getRecipeById(String id){
+        for(Recipe recipe: this.recipes){
+            if(recipe.getId().equals(id)){
+                return recipe;
+            }
+        }
+        return null;
+    }
+    // Finds recipe by title
+    public Recipe getRecipeByTitle(String title){
+        for(Recipe recipe: this.recipes){
+            if(recipe.getTitle().equals(title)){
+                return recipe;
+            }
+        }
+        return null;
+    }
+    // Sets selected recipe
     public void setSelectedRecipeId(String id) {
         selectedRecipeId = id;
     }
+    // Gets the selected recipe
     public String getSelectedRecipeId() {
         return selectedRecipeId;
     }

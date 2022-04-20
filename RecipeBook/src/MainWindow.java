@@ -1,9 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.util.ArrayList;
 
 // Creates the main window of the application
 public class MainWindow {
@@ -13,7 +9,6 @@ public class MainWindow {
     public MainWindow(){
         this.baseFrame = new JFrame("Recipe Book");
         this.baseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         /* Creates an invisible panel that has a horizontal layout.
            This will hold the recipe list panel and the recipe info panel
          */
@@ -22,7 +17,7 @@ public class MainWindow {
         this.baseLayoutPanel.setLayout(baseLayout);
 
         // Add the recipe list panel
-        this.baseLayoutPanel.add(new RecipeListPanel());
+        this.baseLayoutPanel.add(RecipeListPanel.getInstance());
         this.baseLayoutPanel.add(RecipeInfoPanel.getInstance());
 
         this.baseFrame.getContentPane().add(this.baseLayoutPanel);

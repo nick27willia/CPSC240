@@ -1,4 +1,4 @@
 Id:test
 Title:sandwich
-Steps:get
-Ingredients:bread,get
+Steps:test,tesr2
+Ingredients:bruh

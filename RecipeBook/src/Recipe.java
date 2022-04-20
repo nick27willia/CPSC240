@@ -10,7 +10,6 @@ public class Recipe {
     private String title = "";
     private ArrayList<String> steps;
     private ArrayList<String> ingredients;
-
     // constructor for gathering recipe parameters
     public Recipe(String id, String title, ArrayList<String> steps, ArrayList<String> ingredients) {
         this.id = id;
@@ -27,14 +26,12 @@ public class Recipe {
     public String getTitle() {
         return this.title;
     }
-
     public String getId() {
         return this.id;
     }
     public ArrayList<String> getSteps() {
         return this.steps;
     }
-
     public ArrayList<String> getIngredients() {
         return this.ingredients;
     }
