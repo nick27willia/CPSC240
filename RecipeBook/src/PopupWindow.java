@@ -29,8 +29,8 @@ public class PopupWindow {
         this.baseFrame.setPreferredSize(new Dimension(600, 500));
         this.baseFrame.pack();
         this.baseFrame.setResizable(false);
-//        this.baseFrame.setVisible(false);
-        this.baseFrame.setVisible(true);
+        this.baseFrame.setVisible(false);
+//        this.baseFrame.setVisible(true);
     }
     public void show(boolean shouldShow){
         this.baseFrame.setVisible(shouldShow);

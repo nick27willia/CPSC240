@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class RecipeManager {
@@ -99,6 +98,12 @@ public class RecipeManager {
     }
     // Save recipes
     public void saveRecipes() {
+        // Clear the folder incase recipes were removed
+        File[] files = new File("./RecipeBook/Recipes").listFiles();
+        if(files != null){
+            for(File file: files)
+                file.delete();
+        }
         // Save recipes
         for(Recipe recipe: this.recipes){
             recipe.save();
