@@ -32,8 +32,8 @@ public class RecipeInfoPanel extends JPanel {
         this.add(this.buildIngredientsAndStepsPanel());
         // Spacer
         this.add(Box.createVerticalGlue());
-        // Creates a panel to horizontally align the edit and delete buttons
-        this.add(this.buildRecipeInfoButtonsPanel());
+        // Delete recipe button
+        this.add(this.buildDeleteRecipeButton());
     }
     // Recipe title
     private JLabel buildRecipeTitleLabel(){
@@ -123,29 +123,6 @@ public class RecipeInfoPanel extends JPanel {
         this.stepsList.setAlignmentX(0);
         return this.stepsList;
     }
-    // Creates a panel to horizontally align the edit and delete buttons
-    private JPanel buildRecipeInfoButtonsPanel(){
-        JPanel recipeInfoButtonsPanel = new JPanel();
-        recipeInfoButtonsPanel.setAlignmentX(0);
-        recipeInfoButtonsPanel.setPreferredSize(new Dimension(500, 50));
-        recipeInfoButtonsPanel.setMaximumSize(new Dimension(500, 50));
-        recipeInfoButtonsPanel.setBackground(Color.decode("#DDE0FB"));
-        // Sets horizontal layout
-        BoxLayout recipeInfoButtonsPanelLayout = new BoxLayout(recipeInfoButtonsPanel, BoxLayout.X_AXIS);
-        recipeInfoButtonsPanel.setLayout(recipeInfoButtonsPanelLayout);
-        // Edit recipe button
-        recipeInfoButtonsPanel.add(this.buildEditRecipeButton());
-        // Spacer
-        recipeInfoButtonsPanel.add(Box.createRigidArea(new Dimension(20, 0)));
-        // Delete recipe button
-        recipeInfoButtonsPanel.add(this.buildDeleteRecipeButton());
-        return recipeInfoButtonsPanel;
-    }
-    // Edit recipe button
-    private JButton buildEditRecipeButton(){
-        JButton editRecipeButton = new Button("Edit Recipe");
-        return editRecipeButton;
-    }
     // Delete recipe button
     private JButton buildDeleteRecipeButton(){
         JButton deleteRecipeButton = new Button("Delete Recipe");
@@ -172,11 +149,13 @@ public class RecipeInfoPanel extends JPanel {
         this.ingredientsList.setText("<html><ul style='margin:0px 20px'>"+arrayListToLi(recipe.getIngredients())+"</ul></html>");
         this.stepsList.setText("<html><ol style='margin:0px 20px'>"+arrayListToLi(recipe.getSteps())+"</ol></html>");
     }
+    // Clears recipe info
     private void clearRecipeInfo(){
         this.recipeTitleLabel.setText("");
         this.ingredientsList.setText("<html><ul style='margin:0px 20px'></ul></html>");
         this.stepsList.setText("<html><ol style='margin:0px 20px'></ol></html>");
     }
+    // Generates html li string from array list
     private String arrayListToLi(ArrayList<String> arrayList){
         StringBuilder liString= new StringBuilder();
         for (String el : arrayList) {
